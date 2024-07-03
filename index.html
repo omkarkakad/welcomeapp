@@ -1,0 +1,81 @@
+<html>
+<head>
+<title> My Welcome App </title>
+<style>
+ 	* {font-size:40px;}
+	body {background-color:lightblue;}
+	h1 {background-color:black;color:white;width:50%;border-radius:40px;}
+	.btn {background-color:black;color:white;margin-left:100px;width:20%;}
+	.btn:hover {color:red;}	
+
+</style>
+
+</head>
+<body>
+<center>
+	<h1> Welcome App by Omkar </h1>
+	<form onsubmit="show()">
+	<input type="text" placeholder="Enter name" id="name"/>
+	<br><br>
+	<input type="submit"/>
+
+
+	</form>
+	<h2 id="msg"/>
+	<script>
+		function show()
+		{
+			event.preventDefault();
+			let name=document.getElementById("name");
+			let msg=document.getElementById("msg");
+
+			if (name.value==="")
+			{
+				alert("name shud not be empty");
+				msg.innerHTML="";
+				name.focus();
+				return;
+			}
+
+
+			if (name.value.trim()==="")
+			{
+				alert("name shud not be have empty spaces");
+				msg.innerHTML="";
+				name.value="";
+				name.focus();
+				return;
+			}
+
+			if (!name.value.match(/^[A-Za-z ]+$/))
+			{
+				alert("name contain only alphabets");
+				msg.innerHTML="";
+				name.focus();
+				return;
+			}
+
+			let d= new Date();
+			let hr=d.getHours();
+			let res=""
+			if (hr<12)
+				res="GOOD MORNING " + name.value;
+			else if (hr<16)
+				res="GOOD AFTERNOON " + name.value;
+			else
+				res="GOOD EVENING " + name.value;
+
+			msg.innerHTML=res;			
+			
+
+		}
+
+
+	</script>
+
+
+</center>
+
+</body>
+
+</html>
